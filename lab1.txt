@@ -1,0 +1,29 @@
+CREATE database	lab1;
+use lab1;
+-- 6
+CREATE TABLE IF NOT EXISTS movies
+(movie_id integer NOT NULL AUTO_INCREMENT PRIMARY KEY,movie_name varchar(40) NOT NULL,movie_rating integer NOT NULL);
+INSERT INTO movies (movie_name,movie_rating) VALUES('Star Wars',13);
+INSERT INTO movies (movie_name,movie_rating) VALUES('Harry Potter',7);
+
+--  7
+CREATE TABLE IF NOT EXISTS books
+(book_id integer NOT NULL AUTO_INCREMENT PRIMARY KEY,book_name varchar(40) NOT NULL DEFAULT 'N/A',book_rating integer NOT NULL);
+INSERT INTO books VALUES(501,'Star Wars',13);
+INSERT INTO books(book_rating) VALUES(15);
+INSERT INTO books(book_name,book_rating) VALUES('Harry Potter',6);
+
+-- 8
+CREATE TABLE IF NOT EXISTS company(company_id varchar(28) NOT NULL UNIQUE PRIMARY KEY, trade varchar(40) NOT NULL, number_of_employees int DEFAULT 0);
+INSERT INTO company VALUES(1001,'Nokia',8000);
+INSERT INTO company VALUES(1002,'Samsung',12000);
+SELECT * from company;
+
+-- 9
+CREATE TABLE IF NOT EXISTS job_offer(offer_id varchar(36) NOT NULL UNIQUE, offer_title varchar(40) NOT NULL DEFAULT ' ', offer_min_salary decimal(6,0) DEFAULT 5000, offer_max_salary decimal(6,0) DEFAULT NULL, company_id varchar(28) NOT NULL, FOREIGN KEY (company_id) REFERENCES company(company_id));
+
+INSERT INTO job_offer VALUES(321,'Java developer',6000,10000,1001);
+INSERT INTO job_offer VALUES(322,'QA Engineer',3000,6000,1001);
+
+select * from job_offer;
+
